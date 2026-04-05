@@ -29,6 +29,8 @@ export const ProductAPI = {
 			// Next.js aggressive caching, revalidate every hour
 			cache: 'force-cache',
 			next: { revalidate: 3600 },
+			// @ts-expect-error - Cloudflare Workers fetch extension
+			cf: { cacheTtl: 3600, cacheEverything: true }
 		});
 
 		if (!response.ok) {
@@ -59,6 +61,8 @@ export const ProductAPI = {
 		const response = await fetch(`${API_BASE_URL}/products/${id}`, {
 			cache: 'force-cache',
 			next: { revalidate: 3600 },
+			// @ts-expect-error - Cloudflare Workers fetch extension
+			cf: { cacheTtl: 3600, cacheEverything: true }
 		});
 
 		if (!response.ok) {
